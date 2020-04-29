@@ -1,4 +1,6 @@
+score.txt
 /.idea
 /venv
 residuals/
 temp.py
+__pycache__/

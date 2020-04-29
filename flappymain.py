@@ -82,8 +82,8 @@ class Game:
                     sound = pygame.mixer.Sound('flappy_assests/sfx_point.wav')
                     sound.play()
                     plat.kill()
-        while len(self.obs) < 5:
-            height = random.randrange(100, 130)  # x,y,w,h
+        while len(self.obs) < 4:
+            height = random.randrange(100, 200)  # x,y,w,h
             Obs(self, WIDTH / 2 + 200, 0, 50, height)
             point = random.randrange(400, 0, -105)
             Obs(self, WIDTH / 2 + 200, point + 200, 50, 1000)
@@ -130,8 +130,8 @@ class Game:
         self.screen.blit(start_bg, (0, 0))
         self.draw_text(TITLE, 65, BLACK, WIDTH / 2, HEIGHT / 4)
         self.draw_text("BY SHIVANG", 26, (102, 0, 102), WIDTH / 2, HEIGHT / 2)
-        self.draw_text("Press any key to continue...", 20, BLACK, WIDTH / 2, HEIGHT - 100)
-        self.draw_text("HIGH SCORE " + str(self.highscore), 15, BLACK, WIDTH / 2, HEIGHT - 15)
+        self.draw_text("Press TAB to continue...", 20, BLACK, WIDTH / 2, HEIGHT - 100)
+        self.draw_text("HIGH SCORE " + str(self.highscore), 15, BLACK, WIDTH / 2, HEIGHT - 20)
         pygame.display.flip()
         self.wait_for_key()
 
@@ -143,15 +143,15 @@ class Game:
         self.screen.fill(Teal)  # ((153, 55, 153))
         self.draw_text("GAME OVER!", 65, WHITE, WIDTH / 2, HEIGHT / 4)
         self.draw_text("Score : " + str(self.score), 25, WHITE, WIDTH / 2, HEIGHT / 2)
-        self.draw_text("Press any key to restart...", 20, WHITE, WIDTH / 2, HEIGHT - 100)
-        self.draw_text("HIGH SCORE " + str(self.highscore), 15, BLACK, WIDTH / 2, HEIGHT - 15)
+        self.draw_text("Press TAB to restart...", 20, WHITE, WIDTH / 2, HEIGHT - 100)
+        self.draw_text("HIGH SCORE " + str(self.highscore), 15, BLACK, WIDTH / 2, HEIGHT - 20)
         if self.score > self.highscore:
             self.highscore = self.score
             self.draw_text("NEW HIGH SCORE", 20, WHITE, WIDTH / 2, HEIGHT - 150)
             with open("score.txt", "w") as file:
                 file.write(str(self.highscore))
         else:
-            self.draw_text("HIGH SCORE " + str(self.highscore), 15, WHITE, WIDTH / 2, HEIGHT - 15)
+            self.draw_text("HIGH SCORE " + str(self.highscore), 15, WHITE, WIDTH / 2, HEIGHT - 20)
         pygame.display.flip()
         self.wait_for_key()
 
@@ -163,8 +163,9 @@ class Game:
                 if event.type == pygame.QUIT:
                     waiting = False
                     self.running = False
-                if event.type == pygame.KEYUP:
-                    waiting = False
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_TAB:
+                        waiting = False
 
 
 g = Game()

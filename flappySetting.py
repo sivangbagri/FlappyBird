@@ -3,7 +3,7 @@ import random
 
 WIDTH = 480
 HEIGHT = 600
-FPS = 120
+FPS = 60
 TITLE = 'Flappy2.0'
 ICON = pygame.image.load('flappy_assests//newwgl.png')
 # colours
@@ -25,10 +25,10 @@ PLAYER_ACC = 0.2
 PLAYER_FRICTION = -0.12
 PLAYER_JUMP = 11
 
-OBS_LIST = [(WIDTH / 2, 0, 50, 100),
-            (WIDTH / 2 + 100, 0, 50, 200),
-            (WIDTH / 2 + 203, 0, 50, 200),
-            (WIDTH / 2 + 350, 0, 50, 200)
+OBS_LIST = [(WIDTH / 2 + 600, 0, 50, 100),  # x,y,w,h
+            (WIDTH / 2 + 690, 0, 50, 200),
+            (WIDTH / 2 + 780, 0, 50, 300),
+            (WIDTH / 2 + 870, 0, 50, 200)
             ]
 
 # bird im
